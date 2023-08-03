@@ -2,19 +2,44 @@
 const config = require('../config');
 
 const requestBody = {
-    // put your body here
+	"productsList": [
+		{
+		  "id": 5,
+		  "quantity": 1
+		}
+	  ]
 }
 
-test('', async () => {
-    try {
-		const response = await fetch(`${config.API_URL}/your/endpoint`, {
+test('Status code should be 201', async () => {
+    let actualStatusCode;
+	try {
+		const response = await fetch(`${config.API_URL}/api/v1/orders`, {
 			method: 'POST',
 			headers: {
 			'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(requestBody)
 		});
+		actualStatusCode = resonse.status;
 	} catch (error) {
 		console.error(error);
 	}
+	expect(actualStatusCode).toBe(201);
 });
+
+test('Response body should contain ...', async () => {
+	let actualResponseBody;
+	try {
+		const response = await fetch(`${congig.API_URL}/api/v1/orders`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'applications/json'
+			},
+			body: JSON.stringify(requestBody)
+		});
+		actualResponseBody = await repsonse.json();
+		} catch (error) {
+			console.error(error);
+		}
+	expect(actualResponseBody["courierService"]).toBe("Order and Go");
+	});
