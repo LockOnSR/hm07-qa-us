@@ -20,25 +20,25 @@ test('Status code should be 201', async () => {
 			},
 			body: JSON.stringify(requestBody)
 		});
-		actualStatusCode = resonse.status;
+		actualStatusCode = response.status;
 	} catch (error) {
 		console.error(error);
 	}
 	expect(actualStatusCode).toBe(201);
 });
 
-test('Response body should contain ...', async () => {
+test('Response body should contain .....', async () => {
 	let actualResponseBody;
 	try {
-		const response = await fetch(`${congig.API_URL}/api/v1/orders`, {
+		const response = await fetch(`${config.API_URL}/api/v1/orders`, {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'applications/json'
+			'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(requestBody)
 		});
-		actualResponseBody = await repsonse.json();
-		} catch (error) {
+		actualResponseBody = await response.json();
+	} catch (error) {
 			console.error(error);
 		}
 	expect(actualResponseBody["courierService"]).toBe("Order and Go");
